@@ -33,9 +33,9 @@ my_file.close()
 # - interest(years: int, rate: float) - calculate interest on savings:
 #       *= (1 + rate) ** years
 #       Check for an overflow error just in case
-# - financial_safety() - returns "safe" if they have a job and they have
+# - financial_safety() - returns True if they have a job and they have
 #       at least $500,000 in save, or if they don't have a job and they
-#       at least $800,000 in save. Otherwise, return "at risk"
+#       at least $800,000 in save. Otherwise, return False
 # - retirement() - returns True if age > 65, or if save > $200,000 and
 #       age > 60, or if save > $400,000 and age > 55, or if
 #       save > $800,000 and age > 50, otherwise False

@@ -33,15 +33,15 @@ my_file.close()
 # - interest(years: int, rate: float) - calculate interest on savings:
 #       *= (1 + rate) ** years
 #       Check for an overflow error just in case
-# - financial_safety() - returns True if they have a job and they have
+# - is_financially_safe() - returns True if they have a job and they have
 #       at least $500,000 in save, or if they don't have a job and they
 #       at least $800,000 in save. Otherwise, return False
-# - retirement() - returns True if age > 65, or if save > $200,000 and
+# - can_retire() - returns True if age > 65, or if save > $200,000 and
 #       age > 60, or if save > $400,000 and age > 55, or if
 #       save > $800,000 and age > 50, otherwise False
 # - trust_size() - returns save divided by number of siblings.
 #       Watch out for division by zero errrors, in which case return 0.0
-# - afford_pet() - returns True if they have more than $100,000 in check
+# - can_afford_pet() - returns True if they have more than $100,000 in check
 #       and False otherwise
 
 

@@ -33,15 +33,15 @@ my_file.close()
 # - interest(years: int, rate: float) - calculate interest on savings:
 #       *= (1 + rate) ** years
 #       Check for an overflow error just in case
-# - financial_safety() - returns True if they have a job and they have
+# - is_financially_safe() - returns True if they have a job and they have
 #       at least $500,000 in save, or if they don't have a job and they
 #       at least $800,000 in save. Otherwise, return False
-# - retirement() - returns True if age > 65, or if save > $200,000 and
+# - can_retire() - returns True if age > 65, or if save > $200,000 and
 #       age > 60, or if save > $400,000 and age > 55, or if
 #       save > $800,000 and age > 50, otherwise False
-# - trust_size() - returns save divided by number of siblings
-#       Watch out for division by zero errrors
-# - afford_pet() - returns True if they have more than $100,000 in check
+# - trust_size() - returns save divided by number of siblings.
+#       Watch out for division by zero errrors, in which case return 0.0
+# - can_afford_pet() - returns True if they have more than $100,000 in check
 #       and False otherwise
 class Person:
     def __init__(
@@ -174,7 +174,7 @@ class Person:
         else:
             return self._saving
 
-    def financial_safety(self) -> bool:
+    def is_financially_safe(self) -> bool:
         if self._has_job and save >= 500000.0:
             return True
         elif (not self._has_job) and save >= 800000.0:
@@ -182,7 +182,7 @@ class Person:
         else:
             return False
 
-    def retirement(self) -> bool:
+    def can_retire(self) -> bool:
         if self._age > 65:
             return True
         elif self._age > 60 and save > 200000.0:
@@ -203,7 +203,7 @@ class Person:
             return trust
         return 0.0
 
-    def afford_pet(self) -> bool:
+    def can_afford_pet(self) -> bool:
         if self._saving < 100000.0:
             return False
         else:
@@ -300,7 +300,7 @@ print(f"The average person has ${average_save:,.2f} in saving.")
 # to retire. Print the result.
 count = 0
 for person in people:
-    if person.financial_safety() or person.retirement():
+    if person.is_financially_safe() or person.can_retire():
         count += 1
 print(f"{count} people are financially safe or able to retire")
 
@@ -315,6 +315,6 @@ print(f"The average trust size is ${average:,.2f}")
 # Print the percentage of people that fall into this category
 count = 0
 for person in people:
-    if person.has_pet or person.afford_pet():
+    if person.has_pet or person.can_afford_pet():
         count += 1
 print(f"{count / len(people):.2%} of people have a pet or can afford one.")
